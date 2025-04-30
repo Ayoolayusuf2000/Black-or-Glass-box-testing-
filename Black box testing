@@ -1,0 +1,4 @@
+def test_login_fails_with_wrong_password():
+    response = client.post('/login/', {'username': 'test', 'password': 'wrong'})
+    assert response.status_code == 401
+    assert b'Invalid credentials' in response.content
