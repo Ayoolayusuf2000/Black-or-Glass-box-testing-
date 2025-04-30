@@ -1,0 +1,16 @@
+def calculate_discount(is_member: bool, total: float) -> float:
+    if not is_member:
+        return total
+    if total > 100:
+        return total * 0.9
+    return total * 0.95
+
+# Glass box tests knowing the implementation
+def test_non_member_pays_full_price():
+    assert calculate_discount(False, 50) == 50
+
+def test_member_gets_10_percent_over_100():
+    assert calculate_discount(True, 200) == 180
+
+def test_member_gets_5_percent_under_100():
+    assert calculate_discount(True, 80) == 76
